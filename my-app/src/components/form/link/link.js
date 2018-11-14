@@ -1,14 +1,15 @@
 import React from 'react' 
+import { Link as LinkRouter} from 'react-router-dom'  // para nao usar 2x ex. LinkLink
 import './link.css'
 
 
 function Link (props){
     return (
-    <a id={props.id} className='link' href={props.children}>
+    <LinkRouter id={props.id} className='link' to={props.href}>
      {props.children}
-    </a> 
+    </LinkRouter> 
         
     )
 }
 
-export default Link
+export default Link;
