@@ -4,5 +4,8 @@ import Form from './index'
 
 storiesOf ( 'Components/Form', module)
     .add('default', () =>(
-        <Form> Form Here </Form> 
+        <Form title='Title Here' text='Text Here'> 
+            <Form.Label> Nome</Form.Label>
+            <Form.Input type='text' />
+        </Form> 
     ))
