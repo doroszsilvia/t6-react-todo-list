@@ -6,9 +6,11 @@ import Signup from './pages/signup'
 import Home from './pages/home'
 import Navbar from './components/navbar'
 import pageNotFound from './pages/pageNotFound'
+import { startServer } from './infra/api-config'
 
 class App extends Component {
   render() {
+    startServer()
     return( 
       <React.Fragment> 
       <Navbar />
@@ -24,7 +26,7 @@ class App extends Component {
   }
 }
 
-export default withRouter(App)  // comando para funcionar
+export default withRouter(App)          // comando para funcionar
 
 
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import Form from '../../components/form'
 import Container from '../../components/container'
-
+import { setUser } from '../../infra/local-storage' 
+import { SignupUser } from '../../apis/signup.api' 
 
 
 // function Signup (){
@@ -60,12 +61,36 @@ class Signup extends React.Component{
 
 
     }
+    handleSubmit= (e) =>{
+        e.preventDefault()
 
-    render (){
+        const inputName = this.name.current
+        const inputEmail = this.email.current
+        const inputPhone = this.phone.current
+        const inputPassword = this.password.current
+        const user = {
+            name : inputName.getValue(),
+            email: inputEmail.getValue(),
+            phone : inputPhone.getValue(),
+            password : inputPassword.getValue()
+        }
+
+        SignupUser(user)
+            .then((response) => {        
+                setUser({ email : user.email})
+                this.props.hitory.push('/')
+            })
+            .catch((error) => {           
+                console.log(error)
+            })  
+            
+        }        
+
+        render (){
         return(
             <Container>
 
-                <Form title='Faça Seu Cadastro' text='Preencha com Seus Dados'>
+                <Form title='Faça Seu Cadastro' text='Preencha com Seus Dados' onSubmit={this.handleSubmit}>
 
                     <Form.Label htmlFor='name'> Nome </Form.Label>
                     <Form.Input ref={this.name} id='name' type='text' onChange={this.onDisabledButton} required/>

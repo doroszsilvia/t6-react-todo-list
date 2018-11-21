@@ -44,7 +44,7 @@ class Input extends React.Component {    //  state é herdado do React.Component
                     onBlur={this.handleChange}      // validaçao do input
                     type={this.props.type}
                     id={this.props.id}
-                    className= 'input'
+                    className='input'
                     placeholder={this.props.placeholder}
                     required={this.props.required} 
                 />
